@@ -1,0 +1,23 @@
+parse_requirement_task:
+  description: >
+    Parse the raw business requirement input provided by the user.
+    Extract all relevant details such as product/service needed, quantity, specifications, delivery timelines, and vendor requirements.
+  expected_output: >
+    A structured JSON object containing all extracted fields that are relevant for generating an RFQ.
+  agent: requirement_analyst
+
+generate_rfq_task:
+  description: >
+    Using the structured requirement data, generate a full RFQ document.
+    Include sections like item description, quantity, delivery schedule, vendor requirements, evaluation criteria, and submission instructions.
+  expected_output: >
+    A professionally written RFQ formatted in markdown, ready for review.
+  agent: rfq_writer
+
+polish_rfq_task:
+  description: >
+    Review the generated RFQ document and refine it for clarity, tone, structure, and compliance.
+    Ensure nothing is missing and everything reads professionally and consistently.
+  expected_output: >
+    A final version of the RFQ that is clean, polished, and ready to send to vendors.
+  agent: rfq_polisher
