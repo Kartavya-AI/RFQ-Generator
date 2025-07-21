@@ -1,54 +1,100 @@
-# RfqGenerator Crew
+# 🧾 RFQ Generator Crew
 
-Welcome to the RfqGenerator Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+Welcome to the **RFQ Generator** – a multi-agent AI system built using [crewAI](https://crewai.com). This project automates the process of generating professional **Request for Quotation (RFQ)** documents from simple business requirements using collaborative AI agents.
 
-## Installation
+It also includes a full **Streamlit web UI** for interactive use.
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+---
 
-First, if you haven't already, install uv:
+## 🚀 Features
+
+- 🔍 Parses business requirements
+- 📝 Automatically generates professional RFQ documents
+- ✅ Polishes and finalizes RFQ outputs
+- 🌐 Streamlit-based UI for non-technical users
+- 🧠 Powered by Gemini
+
+---
+
+## 📦 Installation
+
+> ✅ Requires Python `>=3.10` and `<3.13`
+
+This project uses [UV](https://docs.astral.sh/uv/) for fast and efficient dependency management.
+
+### Step 1: Install `uv`
 
 ```bash
 pip install uv
 ```
 
-Next, navigate to your project directory and install the dependencies:
+### Step 2: Install project dependencies
 
-(Optional) Lock the dependencies and install them by using the CLI command:
+From the project root:
+
+```bash
+uv pip install -r requirements.txt
+```
+
+Or (if using crewai CLI):
+
 ```bash
 crewai install
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+## 🧠 Running the Crew
 
-- Modify `src/rfq_generator/config/agents.yaml` to define your agents
-- Modify `src/rfq_generator/config/tasks.yaml` to define your tasks
-- Modify `src/rfq_generator/crew.py` to add your own logic, tools and specific args
-- Modify `src/rfq_generator/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+To generate the RFQ from the command line:
 
 ```bash
-$ crewai run
+crewai run
 ```
 
-This command initializes the rfq_generator Crew, assembling the agents and assigning them tasks as defined in your configuration.
+This will execute your multi-agent pipeline and output the final RFQ to:
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+`rfq_final.md`
 
-## Understanding Your Crew
+## 🌐 Streamlit App (Web Interface)
 
-The rfq_generator Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+Launch the interactive web app:
 
-## Support
+```bash
+streamlit run src/app.py
+```
 
-For support, questions, or feedback regarding the RfqGenerator Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+Features:
 
-Let's create wonders together with the power and simplicity of crewAI.
+- Enter business needs via a form
+
+- Configure AI models and API keys via sidebar
+
+- Preview and download RFQ as .md file
+
+## 📁 Project Structure
+
+```
+rfq-generator/
+├── src/
+│   ├── app.py              # Streamlit UI
+│   └── rfq_generator/
+│       ├── crew.py         # CrewAI logic
+│       ├── main.py         # CLI runner
+│       ├── config/
+│       │   ├── agents.yaml
+│       │   └── tasks.yaml
+│       └── tools/          # (Optional) Custom tools
+├── rfq_final.md            # Final RFQ output
+├── requirements.txt
+├── pyproject.toml
+└── README.md
+```
+
+## 🧩 Technologies Used
+
+- CrewAI
+
+- Streamlit
+
+- Gemini
+
+- Python 3.10+
