@@ -76,7 +76,7 @@ if submitted:
     if not business_req.strip():
         st.warning("⚠️ Please enter a business requirement before generating the RFQ.")
     else:
-        with st.spinner("🤖 Running the AI crew to generate your RFQ..."):
+        with st.spinner("🤖🤖🤖 Running the AI crew to generate your RFQ..."):
             try:
                 inputs = {
                     "business_requirement": business_req.strip(),
