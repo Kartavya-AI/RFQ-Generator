@@ -1,23 +1,100 @@
+# parse_requirement_task:
+#   description: >
+#     data=>
+#     business_requirement: {business_requirement}
+#     current_year: {current_year}
+#     ###
+#     Parse the raw business requirement input provided by the user.
+#     Extract all relevant details such as product/service needed, quantity, specifications, delivery timelines, and vendor requirements.
+#   expected_output: >
+#     A structured JSON object containing all extracted fields that are relevant for generating an RFQ.
+#   agent: requirement_analyst
+
+# generate_rfq_task:
+#   description: >
+#     data=>
+#     business_requirement: {business_requirement}
+#     current_year: {current_year}
+#     ###
+#     Using the structured requirement data, generate a full RFQ document.
+#     Include sections like item description, quantity, delivery schedule, vendor requirements, evaluation criteria, and submission instructions.
+#   expected_output: >
+#     A professionally written RFQ formatted in markdown, ready for review.
+#   agent: rfq_writer
+
+# polish_rfq_task:
+#   description: >
+#     data=>
+#     business_requirement: {business_requirement}
+#     current_year: {current_year}
+#     ###
+#     Review the generated RFQ document and refine it for clarity, tone, structure, and compliance.
+#     Ensure nothing is missing and everything reads professionally and consistently.
+#   expected_output: >
+#     A final version of the RFQ that is clean, polished, and ready to send to vendors.
+#   agent: rfq_polisher
+# tasks.yaml
+
 parse_requirement_task:
   description: >
-    Parse the raw business requirement input provided by the user.
-    Extract all relevant details such as product/service needed, quantity, specifications, delivery timelines, and vendor requirements.
+    data=>
+    business_requirement: {business_requirement}
+    current_year: {current_year}
+    ###
+    Extract structured procurement data from a user's raw business requirement input.
+    This includes details like the product or service, quantity, technical specifications, delivery deadlines, and vendor qualifications.
   expected_output: >
-    A structured JSON object containing all extracted fields that are relevant for generating an RFQ.
+    A well-structured JSON object with fields such as:
+      - product/service
+      - quantity
+      - specifications
+      - delivery timeline
+      - delivery location
+      - vendor requirements
+      - submission deadline
+      - evaluation criteria
   agent: requirement_analyst
 
 generate_rfq_task:
   description: >
-    Using the structured requirement data, generate a full RFQ document.
-    Include sections like item description, quantity, delivery schedule, vendor requirements, evaluation criteria, and submission instructions.
+    data=>
+    business_requirement: {business_requirement}
+    current_year: {current_year}
+    ###
+    Use the structured data from the parsed requirement to create a complete, professional RFQ document.
+    Ensure the output is formatted in Markdown and includes all standard procurement sections.
   expected_output: >
-    A professionally written RFQ formatted in markdown, ready for review.
+    A draft RFQ document in Markdown format containing:
+      - RFQ Title and ID
+      - Introduction and Purpose
+      - Item Description and Quantity
+      - Mandatory Specifications
+      - Delivery Requirements
+      - Vendor Qualifications
+      - Submission Instructions
+      - Evaluation Criteria
+      - Terms and Conditions
+      - Contact Information
   agent: rfq_writer
 
 polish_rfq_task:
   description: >
-    Review the generated RFQ document and refine it for clarity, tone, structure, and compliance.
-    Ensure nothing is missing and everything reads professionally and consistently.
+    data=>
+    business_requirement: {business_requirement}
+    current_year: {current_year}
+    ###
+    Review the drafted RFQ document and refine it for clarity, tone, formatting, completeness, and professionalism.
+    Ensure all necessary sections are included and clearly articulated.
   expected_output: >
-    A final version of the RFQ that is clean, polished, and ready to send to vendors.
+    A finalized RFQ in Markdown, fully polished and ready for vendor distribution, free from errors or inconsistencies.
+
+    ###
+    Instead of:
+    Thought: The draft looks good; minor tweaks applied...
+    [Final polished RFQ text here]
+
+    ###
+    I’ll just give you:
+    [Final polished RFQ text here]
+
   agent: rfq_polisher

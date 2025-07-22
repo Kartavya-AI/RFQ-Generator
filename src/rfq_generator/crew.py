@@ -40,13 +40,15 @@ class RfqGenerator():
     @task
     def generate_rfq_task(self) -> Task:
         return Task(
-            config=self.tasks_config['generate_rfq_task']
+            config=self.tasks_config['generate_rfq_task'],
+            context=[self.parse_requirement_task()],
         )
 
     @task
     def polish_rfq_task(self) -> Task:
         return Task(
             config=self.tasks_config['polish_rfq_task'],
+            context=[self.parse_requirement_task(),self.generate_rfq_task()],
             output_file='rfq_final.md'
         )
 
