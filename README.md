@@ -98,3 +98,12 @@ rfq-generator/
 - Gemini
 
 - Python 3.10+
+
+```bash
+TOKEN=$(gcloud auth print-identity-token)
+
+curl -H "Authorization: Bearer $TOKEN"      -H "Content-Type: application/json"        -d '{
+    "business_requirement": "We need 500 ergonomic chairs delivered within 3 weeks to our Bangalore office. Chairs must have adjustable armrests and ISO-certified materials."
+}' https://rfq-generator-api-977121587860.asia-south1.run.app/generate-rfq
+
+```

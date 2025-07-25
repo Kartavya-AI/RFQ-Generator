@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.md
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.log
+.venv/
+env/
+venv/
+knowledge/
+tests/
+streamlit_app.py
